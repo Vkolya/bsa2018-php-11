@@ -10,4 +10,11 @@ class Currency extends Model
         "id",
         "name"
     ];
+    /**
+     * Get money with currency
+    */
+    public function money()
+    {
+        return $this->hasMany(Money::class);
+    }
 }

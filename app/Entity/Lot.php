@@ -33,4 +33,22 @@ class Lot extends Model
             return (new Carbon($this->date_time_close))->getTimestamp();
         }
     }
+    /**
+     * Get lot's currency
+     */
+    public function currency()
+    {
+        return $this->hasOne(Currency::class);
+    }
+    /**
+     * Get lot's seller
+     */
+    public function seller()
+    {
+        return $this->hasOne(User::class);
+    }
+    public function scopeActive($query)
+    {
+        return $query->where('date_time_close','>',Carbon::now());
+    }
 }
