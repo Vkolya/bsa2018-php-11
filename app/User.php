@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Entity\Wallet;
 
 class User extends Authenticatable
 {
@@ -26,4 +27,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    /**
+     * Get user's wallet
+     */
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
+    
 }

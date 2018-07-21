@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('market/lots/add', 'LotController@add');
+Route::put('market/lots/store', 'LotController@store')->name('lot.store');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
