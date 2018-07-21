@@ -32,8 +32,6 @@ class AddLotTest extends TestCase
 
         $this->lotRepository = $this->createMock(LotRepository::class);
         
-        
-        
         $this->marketService = new MarketService(
                 $this->lotRepository,$this->app->make(MoneyRepository::class),$this->app->make(WalletRepository::class),
                 $this->app->make(TradeRepository::class),$this->app->make(UserRepository::class),
@@ -44,8 +42,6 @@ class AddLotTest extends TestCase
    
     public function test_add_lot()
     { 
-        
-        
         $this->lotRepository->method('add')
              ->will($this->returnCallback(function($lot) {
                    return $lot;
@@ -54,7 +50,6 @@ class AddLotTest extends TestCase
         $this->lotRepository->method('findActiveLotByCurrency')
              ->willReturn(null);
              
-        
         $lot_request = new AddLotRequest(
                 1,
                 1,
@@ -89,8 +84,6 @@ class AddLotTest extends TestCase
     }
     public function test_add_lot_with_date_open_greater_than_date_close()
     {
-        
-       
         $lotRequest = new AddLotRequest(
                     1,
                     1,
@@ -106,8 +99,6 @@ class AddLotTest extends TestCase
     }
     public function test_add_lot_with_negative_amount()
     {
-        
-       
         $lotRequest = new AddLotRequest(
                     1,
                     1,
